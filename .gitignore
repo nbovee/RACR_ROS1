@@ -1,1 +1,4 @@
 bagfiles/*
+
+.src/*
+!src/hydra_base/*
