@@ -2,5 +2,7 @@ bagfiles/*
 build*/*
 devel*/*
 logs/*
-.src/*
+src/*
+.catkin*/
 !src/hydra_base/*
+!src/motor/*
