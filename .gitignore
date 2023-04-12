@@ -1,4 +1,6 @@
 bagfiles/*
-
+build*/*
+devel*/*
+logs/*
 .src/*
 !src/hydra_base/*

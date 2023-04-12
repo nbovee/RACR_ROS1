@@ -1,2 +1,0 @@
-navigation/base_local_planner:navigation/costmap_2d:navigation/map_server:navigation/nav_core:navigation/voxel_grid
--DCATKIN_DEVEL_PREFIX=/home/nvidia/projects/rosproject/devel -DCMAKE_INSTALL_PREFIX=/home/nvidia/projects/rosproject/install -DCATKIN_WHITELIST_PACKAGES=base_local_planner;costmap_2d;map_server;nav_core;voxel_grid -G Unix Makefiles

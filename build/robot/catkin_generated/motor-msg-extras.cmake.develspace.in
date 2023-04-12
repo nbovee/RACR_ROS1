@@ -1,2 +1,0 @@
-set(motor_MESSAGE_FILES "/home/nvidia/projects/rosproject/src/robot/msg/SentMessage.msg")
-set(motor_SERVICE_FILES "/home/nvidia/projects/rosproject/src/robot/srv/RandomNumber.srv")
