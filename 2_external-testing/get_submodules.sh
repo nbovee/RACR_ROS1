@@ -5,4 +5,4 @@
 # git clone -q http://github.com/Slamtec/rplidar_ros src/rplidar_ros/
 # git clone -q http://github.com/donrv/rrt-ros src/rrt-ros/
 # git clone -q http://github.com/dusty-nv/jetson-utils src/jetson-utils/
-# git clone http://github.com/hasauino/rrt_exploration/ src/rrt_exploration/
+# git clone -q http://github.com/hasauino/rrt_exploration/ src/rrt_exploration/
