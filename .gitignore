@@ -1,5 +1,7 @@
 bagfiles/*
 logs/*
+**/build/
+**/devel/
 !**/src/CMakeList.txt
 .catkin*/
 

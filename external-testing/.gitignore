@@ -1,4 +1,2 @@
-**/build/
-**/src/*
-!**/src/CMakeList.txt
-**/devel/
+/src/*
+!/src/CMakeList.txt
