@@ -10,6 +10,6 @@ git clone -q http://github.com/ros-planning/navigation src/navigation/
 git clone -q http://github.com/wjwwood/serial src/serial/
 git clone -q http://github.com/ros-teleop/teleop_twist_keyboard src/teleop_twist_keyboard/
 git clone -q http://github.com/chiprobotics/chip_bldc_driver/ src/chip_bldc_driver/
-git clone -q http://github.com/ros-drivers/usb_cam src/usb_cam/
+git clone -q -b master http://github.com/ros-drivers/usb_cam src/usb_cam/
 # git clone -q http://github.com/dusty-nv/jetson-utils src/jetson-utils/
 # git clone http://github.com/hasauino/rrt_exploration/ src/rrt_exploration/
