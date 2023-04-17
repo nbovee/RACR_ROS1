@@ -1,6 +1,6 @@
 version: "3"
 services:
-    racr-debug:
+    debug:
       image: ros:melodic
       stdin_open: true
       tty: true
