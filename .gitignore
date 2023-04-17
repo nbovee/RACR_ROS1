@@ -1,5 +1,5 @@
 bagfiles/*
 logs/*
-!**/src/CMaleList.txt
+!**/src/CMakeList.txt
 .catkin*/
 
