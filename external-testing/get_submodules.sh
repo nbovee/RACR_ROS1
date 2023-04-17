@@ -1,4 +1,3 @@
-# git clone -q -b melodic-devel http://github.com/tu-darmstadt-ros-pkg/hector_slam src/hector_slam/
 # git clone -q http://github.com/praveen-palanisamy/multiple-object-tracking-lidar src/multiple-object-tracking-lidar/
 # git clone -q -b melodic-devel http://github.com/ros-planning/navigation src/navigation/
 # git clone -q -b 2.3.1 http://github.com/IntelRealSense/realsense-ros src/realsense-ros/
