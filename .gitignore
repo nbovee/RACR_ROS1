@@ -1,6 +1,6 @@
 bagfiles/*
-build*/*
-devel*/*
+**build*/*
+**devel*/*
 logs/*
 src/*
 .catkin*/
