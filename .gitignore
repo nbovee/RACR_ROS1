@@ -2,6 +2,7 @@ bagfiles/*
 logs/*
 **/build/
 **/devel/
-!**/src/CMakeList.txt
 .catkin*/
+# below doesn't work, but was manually add to index
+!/src/CMakeList.txt
 
