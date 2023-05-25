@@ -1,12 +1,12 @@
-version: "3"
+name: racr
 services:
-    debug:
-      container_name: debug
+    ros:
+      container_name: ros
       build:
-        context: .
-        # image: ros:melodic
-      stdin_open: true
-      tty: true
+        args:
+          base_image: ros:melodic # supports arm and x64, good for dev but not the final image
+      stdin_open: true # keep alive
+      tty: true # keep alive
       # command: bash /RACR/docker_start.sh
       volumes:
         - type: bind

@@ -1,4 +1,5 @@
-FROM ros:melodic
+ARG base_image
+FROM $base_image
 RUN apt-get update
 RUN apt-get install sudo -y
 RUN apt-get install software-properties-common -y
