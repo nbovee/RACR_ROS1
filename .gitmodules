@@ -1,0 +1,3 @@
+[submodule "3_internal/src/ML_node"]
+	path = 3_internal/src/ml_node
+	url = https://github.com/nbovee/RACR_AI
