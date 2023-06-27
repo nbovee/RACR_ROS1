@@ -1,8 +1,3 @@
-bagfiles/*
-logs/*
-**/build/
-**/devel/
-.catkin*/
+/src/**
 # below doesn't work, but was manually add to index
 !/src/CMakeList.txt
-
