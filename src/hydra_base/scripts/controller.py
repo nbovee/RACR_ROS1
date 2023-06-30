@@ -24,6 +24,10 @@ class DonkeyController:
         self.right_feedback = rospy.Publisher("/drivebase_speeds/right", Float32, queue_size=10)
         self.left_feedback = rospy.Publisher("/drivebase_speeds/left", Float32, queue_size=10)
 
+        # Check this
+        self.pubArduino = rospy.Publisher('control_hydra', Twist, queue_size=10)
+
+        # For specific motors
         self.front_left = rospy.Publisher('/motor_driver_1/Command', Command, queue_size=10)
         self.back_right = rospy.Publisher('/motor_driver_2/Command', Command, queue_size=10)
         self.back_left = rospy.Publisher('/motor_driver_3/Command', Command, queue_size=10)
@@ -44,7 +48,9 @@ class DonkeyController:
         #self.scale = 1000 / 3.1459256 / 0.076
 
         while not rospy.is_shutdown():
-            self.publish_controller_command()
+            #self.publish_controller_command() #old command
+            self.set_objective_controller_command() # new command
+            #self.pubArduino.publish() # new command without encapsulation
             self.rate.sleep()
 
     def update_fr_feedback(self, msg):
@@ -56,69 +62,30 @@ class DonkeyController:
     def cut_power(self, msg):
         self.to_cut_power = True
 
+    # def set_objective_controller_command(self, msg):
+
+    #     self.to_cut_power = False
+    #     spd = msg.linear.x
+    #     steering = msg.angular.z
+
+    #     # .4953 is wheelbase width and 0.15 is wheel diameter
+    #     r_rad = (spd + steering * (0.4953/2) * 3.14) / (0.15/2)
+    #     l_rad = (spd - steering * (0.4953/2) * 3.14) / (0.15/2)
+
+    #     max_rps = (3000 / 60)
+
+    #     r_percentage = r_rad / max_rps
+    #     l_percentage = l_rad / max_rps
+
+    #     r_speed = r_percentage * 1000
+    #     l_speed = l_percentage * 1000
+
+    #     self.obj_fl = l_speed
+    #     self.obj_fr = r_speed
+
+    # NEW NEW NEW publishes Twist message to Arduino
     def set_objective_controller_command(self, msg):
-
-        self.to_cut_power = False
-        spd = msg.linear.x
-        steering = msg.angular.z
-
-        # .4953 is wheelbase width and 0.15 is wheel diameter
-        r_rad = (spd + steering * (0.4953/2) * 3.14) / (0.15/2)
-        l_rad = (spd - steering * (0.4953/2) * 3.14) / (0.15/2)
-
-        max_rps = (3000 / 60)
-
-        r_percentage = r_rad / max_rps
-        l_percentage = l_rad / max_rps
-
-        r_speed = r_percentage * 1000
-        l_speed = l_percentage * 1000
-
-        self.obj_fl = l_speed
-        self.obj_fr = r_speed
-
-        #self.obj_fl = int((spd - (self.lxAddly) * steering) * self.scale) // 4
-        #self.obj_fr = int((spd + (self.lxAddly) * steering) * self.scale) // 4
-        #self.obj_bl = int((spd - (self.lxAddly) * steering) * self.scale) // 4 
-        #self.obj_br = int((spd + (self.lxAddly) * steering) * self.scale) // 4
-
-
-    def publish_controller_command(self):
-
-        fl = self.obj_fl
-        fr = self.obj_fr
-        bl = self.obj_bl
-        br = self.obj_br
-
-        print("front_left : {0}, back_right : {1}, back_left : {2}, front_right : {3}".format(fl, fr, bl, br))
-
-        commandFL = Command()
-        commandFR = Command()
-        commandBL = Command()
-        commandBR = Command()
-
-        if self.to_cut_power:
-            commandFL.motor_command = 0
-            commandBR.motor_command = 0
-            commandBL.motor_command = 0
-            commandFR.motor_command = 0
-        else:
-            commandFL.motor_command = fl * -1 if abs(fl) >= 8 else 0
-            commandBR.motor_command = br if abs(br) >= 8 else 0
-            commandBL.motor_command = bl * -1 if abs(bl) >= 8 else 0
-            commandFR.motor_command = fr if abs(fr) >= 8 else 0
-        
-        print("front_left : {0}, back_right : {1}, back_left : {2}, front_right : {3}".format(commandFL.motor_command, commandFR.motor_command, commandBL.motor_command, commandFR.motor_command))
-
-        commandFL.header.stamp = rospy.Time.now()
-        commandBR.header.stamp = rospy.Time.now()
-        commandBL.header.stamp = rospy.Time.now()
-        commandFR.header.stamp = rospy.Time.now()
-
-        self.front_left.publish(commandFL)
-        self.back_right.publish(commandBR)
-        self.back_left.publish(commandBL)
-        self.front_right.publish(commandFR)
+        self.pubArduino.publish(msg)
 
     def update_br_command(self, msg):
         #print(msg.header.stamp.secs, self.start_time.secs, msg.header.stamp.nsecs,  msg.header.stamp.nsecs // 10 ** 8)
@@ -145,6 +112,5 @@ def main():
 
 if __name__ == '__main__':
     main()
-
 
     
