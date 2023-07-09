@@ -4,16 +4,15 @@ from __future__ import print_function
 
 import rospy
 import threading
-from chip_bldc_driver.msg import Command, Feedback
 from geometry_msgs.msg import Twist
 
 from std_msgs.msg import Float32 
 
-class DonkeyController:
+class ArduinoController:
 
     def __init__(self, rate):
 
-        rospy.init_node('Donkey_controller')
+        rospy.init_node('arduino_controller')
 
         rospy.Subscriber("cmd_vel", Twist, self.set_objective_controller_command)
         rospy.Subscriber("motors/cut_power", Float32, self.cut_power)
@@ -108,7 +107,7 @@ class DonkeyController:
 
 def main():
 
-    controller = DonkeyController(30)
+    controller = ArduinoController(30)
 
 if __name__ == '__main__':
     main()
