@@ -10,4 +10,6 @@ RUN sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) 
 RUN sudo apt-get install curl -y
 RUN curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | sudo apt-key add -
 RUN sudo apt-get update -y
+RUN sudo apt-get install -y ros-melodic-realsense2-camera
+RUN sudo apt-get install -y ros-melodic-realsense2-description
 # RUN /RACR/docker_start.sh

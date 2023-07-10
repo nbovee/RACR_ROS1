@@ -8,7 +8,13 @@ services:
       stdin_open: true # keep alive
       tty: true # keep alive
       # command: bash /RACR/docker_start.sh
+      privileged: true
+      network_mode: host
       volumes:
+        - /dev:/dev
+        - /lib/modules:/lib/modules
         - type: bind
           source: ./
           target: /RACR
+          
+        
