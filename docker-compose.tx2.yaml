@@ -5,6 +5,7 @@ services:
       network_mode: "host"
       devices:
       - "/dev/ttyracr:/dev/ttyracr"
+# comment to add a change
       deploy:
         resources:
           reservations:
