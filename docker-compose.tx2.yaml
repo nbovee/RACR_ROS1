@@ -1,3 +1,4 @@
+version: '2'
 services:
     ros:
       privileged: true # not good practice, may not be needed
