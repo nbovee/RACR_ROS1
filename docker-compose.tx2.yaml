@@ -1,18 +1,24 @@
-version: '2'
+version: '3.5'
 services:
-    ros:
-      privileged: true # not good practice, may not be needed
-      network_mode: "host"
-      devices:
+  ros:
+    privileged: true # not good practice, may not be needed
+    network_mode: "host"
+    devices:
       - "/dev/ttyracr:/dev/ttyracr"
-# comment to add a change
-      deploy:
-        resources:
-          reservations:
-            devices:
-              - capabilities: [gpu]
-                driver: nvidia
-                count: 1
-      build:
-        args:
-          base_image: "dustynv/ros:melodic-ros-base-l4t-r32.7.1" # jetson TX2 Jetpack version 4.6.1 required
+    volumes:
+      - /dev:/dev
+      - /lib/modules:/lib/modules
+      - /tmp/.X11-unix:/tmp/.X11-unix
+    environment:
+      - DISPLAY=${DISPLAY}
+    # deploy: # This tree of settings only supported in docker-compose 1.28.x
+    #   resources:
+    #     reservations:
+    #       devices:
+    #         - driver: nvidia
+    #           capabilities: [gpu]
+    #           count: 1
+    build:
+      args:
+        base_image: "dustynv/ros:melodic-ros-base-l4t-r32.7.1" # jetson TX2 Jetpack version 4.6.1 required
+    

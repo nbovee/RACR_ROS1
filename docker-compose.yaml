@@ -1,10 +1,17 @@
-version: '2'
+version: '3.5'
 services:
   ros:
     build:
       context: ~/RACR_ROS1/ 
     stdin_open: true # keep alive
     tty: true # keep alive
-    # command: bash /RACR/docker_start.sh
+    privileged: true
+    network_mode: host
+    environment:
+      - DISPLAY=${DISPLAY}
     volumes:
-            - ~/RACR_ROS1/:/RACR
+      - /dev:/dev
+      - /lib/modules:/lib/modules
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      - ~/RACR_ROS1/:/RACR
+    # command: bash /RACR/docker_start.sh
