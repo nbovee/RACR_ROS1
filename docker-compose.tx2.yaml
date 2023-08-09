@@ -14,3 +14,9 @@ services:
       build:
         args:
           base_image: "dustynv/ros:melodic-ros-base-l4t-r32.7.1" # jetson TX2 Jetpack version 4.6.1 required
+    ros_node_tx2:
+      build:
+        context: ./RACR_ROS1/3_internal/src/uart/uart_node.py
+        dockerfile: Dockerfile
+      volumes:
+        - ./RACR_ROS1/Dockerfile # unsure if correct
