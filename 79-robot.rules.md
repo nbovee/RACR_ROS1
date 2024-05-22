@@ -22,13 +22,8 @@ sudo chown root:root 79-robot.rules
 # and https://stackoverflow.com/questions/67123997/how-to-find-reasons-why-an-udev-rule-is-not-applied
 # and https://unix.stackexchange.com/questions/39370/how-to-reload-udev-rules-without-reboot
 
-ACTION=="add", SUBSYSTEM=="tty", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6015", ATTRS{serial}=="DT04KMKB", SYMLINK+="ttyMOTOR0"
-
-ACTION=="add", SUBSYSTEM=="tty", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6015", ATTRS{serial}=="DT04KMK5", SYMLINK+="ttyMOTOR1"
-
-ACTION=="add",, SUBSYSTEM=="tty", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6015", ATTRS{serial}=="DT04KMKD", SYMLINK+="ttyMOTOR2"
-
-ACTION=="add",, SUBSYSTEM=="tty", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6015", ATTRS{serial}=="DT04KMK1", SYMLINK+="ttyMOTOR3"
-
-ACTION=="add",, SUBSYSTEM=="tty", ATTRS{idVendor}=="10c4", ATTRS{idProduct}=="ea60", SYMLINK+="ttyLIDAR"
+ACTION=="add", SUBSYSTEM=="tty", ATTRS{idVendor}=="2341", ATTRS{idProduct}=="0042", SYMLINK+="ttyARDUINO"
+ACTION=="add", SUBSYSTEM=="tty", ATTRS{idVendor}=="8086", ATTRS{idProduct}=="0b07", SYMLINK+="ttyDEPTHCAM"
+#lidar package installs its own udev rules
+#ACTION=="add", SUBSYSTEM=="tty", ATTRS{idVendor}=="10c4", ATTRS{idProduct}=="ea60", SYMLINK+="ttyLIDAR"
 ```
